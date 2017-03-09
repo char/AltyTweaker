@@ -20,10 +20,10 @@ index f21b301..bd23b09 100644
 -  "minecraftArguments": "--username ${auth_player_name} --version ${version_name} --gameDir ${game_directory} --assetsDir ${assets_root} --assetIndex ${assets_index_name} --uuid ${auth_uuid} --accessToken ${auth_access_token} --userProperties ${user_properties} --userType ${user_type}",
 +  "minecraftArguments": "--username ${auth_player_name} --version ${version_name} --gameDir ${game_directory} --assetsDir ${assets_root} --assetIndex ${assets_index_name} --uuid ${auth_uuid} --accessToken ${auth_access_token} --userProperties ${user_properties} --userType ${user_type} --tweakClass net.altdispenser.altytweaker.launch.AltyTweakerTweaker",
    "libraries": [
-     {
++    {
 +      "name": "net.altdispenser:altytweaker:0.1"
 +    }
-+    {
+     {
        "name": "com.mojang:netty:1.6",
        "downloads": {
          "artifact": {
