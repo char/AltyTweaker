@@ -22,7 +22,7 @@ index f21b301..bd23b09 100644
    "libraries": [
 +    {
 +      "name": "net.altdispenser:altytweaker:0.1"
-+    }
++    },
      {
        "name": "com.mojang:netty:1.6",
        "downloads": {
