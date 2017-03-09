@@ -1,3 +1,10 @@
+# Set up a development environment
+
+```
+$ ./gradlew setupDecompWorkspace # (This is required to compile!)
+$ ./gradlew idea # If you are using IntelliJ idea, use this and open the generated .ipr file.
+```
+
 # Compile &amp; Install
 
 ```
