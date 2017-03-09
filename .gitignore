@@ -1,0 +1,13 @@
+# Ignore gradle files
+
+.gradle/
+build/
+run/
+
+# Ignore IntelliJ files
+
+*.iml
+*.ipr
+*.iws
+
+out/

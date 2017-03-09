@@ -1,0 +1,8 @@
+{
+  "package": "net.altdispenser.altytweaker.mixin",
+  "refmap": "mixins.altytweaker.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinYggdrasilMinecraftSessionService"
+  ]
+}

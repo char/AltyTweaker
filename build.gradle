@@ -1,0 +1,89 @@
+apply plugin: "net.minecraftforge.gradle.tweaker-client"
+apply plugin: "org.spongepowered.mixin"
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sponge"
+            url = "http://repo.spongepowered.org/maven"
+        }
+        maven {
+            name 'Shadow'
+            url 'http://dl.bintray.com/content/johnrengelman/gradle-plugins'
+        }
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT"
+        classpath "org.spongepowered:mixingradle:0.4-SNAPSHOT"
+        classpath 'org.gradle.plugins:shadow:0.7.4'
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "sponge"
+        url = "http://repo.spongepowered.org/maven"
+    }
+}
+
+group "net.altdispenser.altypatcher"
+version "1.0-SNAPSHOT"
+
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = targetCompatibility = "1.8"
+}
+
+minecraft {
+    version = "1.8"
+    mappings = "snapshot_20151128"
+    runDir = "run"
+
+    tweakClass = "net.altdispenser.altytweaker.launch.AltyTweakerTweaker"
+
+    makeObfSourceJar = false
+}
+
+sourceSets {
+    main {
+        refMap = "mixins.altytweaker.refmap.json"
+    }
+}
+
+mixin {
+    defaultObfuscationEnv notch
+    // defaultObfuscationEnv searge // FORGE-ONLY SUPPORT
+}
+
+configurations {
+    shade
+    compile.extendsFrom shade
+}
+
+dependencies {
+    shade('net.minecraft:launchwrapper:1.12') {
+        exclude module: 'lwjgl'
+    }
+
+    shade('org.spongepowered:mixin:0.6.1-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+    }
+}
+
+jar {
+    configurations.shade.each { dep ->
+        from(project.zipTree(dep)){
+            exclude 'META-INF', 'META-INF/**'
+        }
+    }
+}
